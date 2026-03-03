@@ -4,6 +4,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      ./modules/packages.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -23,9 +24,14 @@
 	nerd-fonts.jetbrains-mono
 	font-awesome	
   ];
-  
+
+  #### WINDOWS_MANAGER STUFFs
   services.displayManager.ly.enable = true;
   programs.niri.enable = true;
+
+  services.gvfs.enable = true;
+  programs.dconf.enable = true;
+  
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -68,21 +74,14 @@
     packages = with pkgs; [];
   };
 
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  	wl-clipboard
+  	micro
   	git
   	gh
-  	localsend
-  	chromium
-  	nautilus
-  	micro
-  	alacritty
-  	kitty
-  	rofi
-  	fuzzel
-  	waybar
+  	wl-clipboard
   	xwayland-satellite	
   ];
 
