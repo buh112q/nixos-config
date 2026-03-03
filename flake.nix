@@ -1,10 +1,8 @@
 {
-  description = "A very basic flake";
-
+  description = "A Flakes";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
-
   outputs = { self, nixpkgs }: {
   	nixosConfigurations.NixOS = nixpkgs.lib.nixosSystem {
 		system = "x86_64-linux";
