@@ -60,10 +60,10 @@
   programs.chromium.enable = true;
   
   programs.fish.enable = true;
-  users.users.aa = {
+  users.users.sock = {
     isNormalUser = true;
     shell = pkgs.fish;
-    description = "aa";
+    description = "sock";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
