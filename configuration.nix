@@ -19,6 +19,12 @@
 	nerd-fonts.jetbrains-mono
 	font-awesome	
   ];
+  zramSwap = {
+      enable = true;
+      priority = 100;
+      algorithm = "lz4";
+      memoryPercent = 50;
+    };
   #### WINDOWS_MANAGER STUFFs
   services.displayManager.ly.enable = true;
   programs.niri.enable = true;
