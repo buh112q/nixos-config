@@ -53,6 +53,7 @@
   };
   nixpkgs.config.allowUnfree = true;
   programs.steam.enable = true;
+  programs.gamescope.enable = true;
   programs.chromium.enable = true;
   programs.fish.enable = true;
   users.users.sock = {
