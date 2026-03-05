@@ -56,10 +56,15 @@
   programs.gamescope.enable = true;
   programs.chromium.enable = true;
   programs.zsh = {
-    enable = true;
-    syntaxHighlighting.enable = true;
-    autosuggestions.enable = true;
-  };
+      enable = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+      ohMyZsh = {
+        enable = true;
+        theme = "agnoster"; # Or choose another theme
+        plugins = [ "git" "history" "npm" "sudo" "history-substring-search"  ]; # Add desired plugins
+      };
+    };
   users.users.sock = {
     isNormalUser = true;
     shell = pkgs.zsh;
