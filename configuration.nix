@@ -63,7 +63,7 @@
       ohMyZsh = {
         enable = true;
         theme = "agnoster"; # Or choose another theme
-        plugins = [ "git" "history" "npm" "sudo" "history-substring-search"  ]; # Add desired plugins
+        plugins = [ "git" "sudo" "history-substring-search"  ]; # Add desired plugins
       };
     };
   users.users.sock = {
