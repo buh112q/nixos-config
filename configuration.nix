@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports =
-    [ 
+    [
       ./hardware-configuration.nix
       ./modules/niri-noctalia.nix
       ./modules/lesser-pkgs.nix
@@ -17,7 +17,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
   fonts.packages = with pkgs; [
 	nerd-fonts.jetbrains-mono
-	font-awesome	
+	font-awesome
   ];
   zramSwap = {
       enable = true;
@@ -55,10 +55,14 @@
   programs.steam.enable = true;
   programs.gamescope.enable = true;
   programs.chromium.enable = true;
-  programs.fish.enable = true;
+  programs.zsh = {
+    enable = true;
+    syntaxHighlighting.enable = true;
+    autosuggestions.enable = true;
+  };
   users.users.sock = {
     isNormalUser = true;
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
     description = "sock";
     extraGroups = [ "networkmanager" "wheel" "i2c" ];
     packages = with pkgs; [];
