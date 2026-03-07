@@ -1,14 +1,13 @@
 { config, pkgs, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./modules/niri-noctalia.nix
-      ./modules/lesser-pkgs.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./modules/niri-noctalia.nix
+    ./modules/lesser-pkgs.nix
+  ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages; ## LTS
+  boot.kernelPackages = pkgs.linuxPackages; # # LTS
   ###linuxPackges_latest
   networking.hostName = "NixOS";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -16,24 +15,24 @@
   time.timeZone = "Asia/Bangkok";
   i18n.defaultLocale = "en_US.UTF-8";
   fonts.packages = with pkgs; [
-	noto-fonts
-	noto-fonts-cjk-sans
-	nerd-fonts.jetbrains-mono
+    noto-fonts
+    noto-fonts-cjk-sans
+    nerd-fonts.jetbrains-mono
   ];
   zramSwap = {
-      enable = true;
-      priority = 100;
-      algorithm = "lz4";
-      memoryPercent = 50;
-    };
+    enable = true;
+    priority = 100;
+    algorithm = "lz4";
+    memoryPercent = 50;
+  };
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
   hardware.graphics = {
-  	enable = true;
-  	enable32Bit = true;
+    enable = true;
+    enable32Bit = true;
   };
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
@@ -57,32 +56,40 @@
   programs.gamescope.enable = true;
   programs.chromium.enable = true;
   programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+    ohMyZsh = {
       enable = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-      ohMyZsh = {
-        enable = true;
-        theme = "agnoster"; # Or choose another theme
-        plugins = [ "git" "sudo" "history-substring-search"  ]; # Add desired plugins
-      };
+      theme = "agnoster"; # Or choose another theme
+      plugins = [
+        "git"
+        "sudo"
+        "history-substring-search"
+      ]; # Add desired plugins
     };
+  };
   environment.sessionVariables = {
-    QS_ICON_THEME="Papirus-Dark";
+    QS_ICON_THEME = "Papirus-Dark";
   };
   users.users.sock = {
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "sock";
-    extraGroups = [ "networkmanager" "wheel" "i2c" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "i2c"
+    ];
+    packages = with pkgs; [ ];
   };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  	nixfmt
+    nixfmt
     micro
-  	git
-  	gh
+    git
+    gh
   ];
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -92,5 +99,8 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
   system.stateVersion = "25.11";
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }

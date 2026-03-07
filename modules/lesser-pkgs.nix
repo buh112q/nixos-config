@@ -1,8 +1,9 @@
-{ pkgs, ...}: {
-	environment.systemPackages = with pkgs; [
-		bat
-		btop
-		fastfetch
-		tree
-	];
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    bat
+    btop
+    fastfetch
+    tree
+  ];
 }
